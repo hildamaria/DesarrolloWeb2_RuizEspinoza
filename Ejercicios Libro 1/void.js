@@ -1,0 +1,10 @@
+// With strictNullChecks set to true
+var azul = undefined; // Ok
+var blanco = null; // Error
+var coral = 3; // Error
+var dududu = "apple"; // Error
+// With strictNullChecks set to false
+var amarillo = undefined; // Ok
+var bruno = null; // Ok
+var camion = 3; // Error
+var dado = "apple"; // Error
