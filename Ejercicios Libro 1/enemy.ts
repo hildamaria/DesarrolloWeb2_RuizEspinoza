@@ -17,3 +17,13 @@ tank.health = 95
 
 //Error because 'damage' is read-only
 tank.damage = 10;
+
+//FUNCIONES E INTERFACES
+interface EnemeyHit {
+    (name: Enemy, damageDone: number):number;
+}
+
+let tankHit: EnemeyHit = function(tankName: Enemy, damageDone: number){
+    tankName.health -= damageDone;
+    return tankName.health;
+}

@@ -8,3 +8,7 @@ var tank = {
 tank.health = 95;
 //Error because 'damage' is read-only
 tank.damage = 10;
+var tankHit = function (tankName, damageDone) {
+    tankName.health -= damageDone;
+    return tankName.health;
+};
