@@ -7,5 +7,9 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
+// Prints "Hi, I am Sally!"
 var personA = new Person("Sally");
+personA.introduceSelf();
+// Prints "Hi, I am Mindy!"
+personA.name = "Mindy";
 personA.introduceSelf();
