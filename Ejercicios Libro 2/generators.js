@@ -90,35 +90,55 @@ console.log('Starting iteration');
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
-//****************************
+//*************test.ts***************
 function generator() {
-    var bar;
+    var err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, 'Console log'];
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, 'foo'];
             case 1:
-                bar = _a.sent();
-                console.log(bar); // 'Un testo inyectado' -> asignado por nextThing = iterator.next('bar')
-                return [4 /*yield*/, 1];
-            case 2:
                 _a.sent();
-                return [2 /*return*/];
+                throw Error("Test");
+            case 2:
+                err_1 = _a.sent();
+                console.log(err_1.message); // bar!
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }
 var iterator = generator();
 // Start execution till we get first yield value
 var foo = iterator.next();
-console.log(foo.value); // Console log
-// Resume execution injecting bar
-var nextThing = iterator.next('Un texto inyectado'); // Aqui se le asigna el value al foo.value
-console.log(nextThing);
-Console;
-log;
-Un;
-texto;
-inyectado;
-{
-    value: 1, done;
-    false;
+console.log(foo.value);
+// como está comentado la excepción no se ejuta ya que no hay un 'next()'
+//var foo = iterator.next();
+function getFirstName() {
+    setTimeout(function () {
+        gen.next('alex');
+    }, 1000);
 }
+function getSecondName() {
+    setTimeout(function () {
+        gen.next('perry');
+    }, 1000);
+}
+function sayHello() {
+    var a, b;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, getFirstName()];
+            case 1:
+                a = _a.sent();
+                return [4 /*yield*/, getSecondName()];
+            case 2:
+                b = _a.sent();
+                console.log(a, b); //alex perry
+                return [2 /*return*/];
+        }
+    });
+}
+var gen = sayHello();
+gen.next();
