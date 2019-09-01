@@ -108,3 +108,26 @@ class Something{
 var s1 = new Something();
 var s2 = new Something();
 console.log(Something.instances);//2
+
+//********* MODIFICADORES DE CLASES **********/
+class FooBase{
+    public x: number;
+    private y: number;
+    protected z: number;
+}
+
+//EFECTOS DE UNA INSTANCIA
+var foo = new FooBase();
+foo.x; //OK
+foo.y; //ERROR : private
+foo.z; //ERROR : protected
+
+//EFECTOS EN UNA CLASE HIJA
+class FooChild extends FooBase{
+    constructor(){
+        super();
+        this.x; //OK
+        this.y; //ERROR: private
+        this.z //OKAY
+    }
+}
