@@ -32,3 +32,21 @@ class MyClass {
 var myClass = new MyClass();
 myClass.myMethod();
 myClass.myMethod2(1, false);
+
+//CLASS DECORATOR
+function ClassDecoratorParms(param1: number, param2: string){
+    return function(
+        target: Function //The class the decorator is declared on 
+    ) {
+        console.log("ClassDecoratorParams(" + param1 + ", '" + param2) + "') called on :", target);
+    }
+}
+@ClassDecoratorParms(1,"a")
+@ClassDecoratorParms(2,"b")
+class ClassDecoratorParamsExample{
+}
+
+ClassDecoratorParams(2, 'b') called on: function ClassDecoratorParamsExample() {
+}
+ClassDecoratorParams(1, 'a') called on: function ClassDecoratorParamsExample() {
+}
