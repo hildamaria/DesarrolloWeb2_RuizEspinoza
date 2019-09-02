@@ -50,3 +50,37 @@ ClassDecoratorParams(2, 'b') called on: function ClassDecoratorParamsExample() {
 }
 ClassDecoratorParams(1, 'a') called on: function ClassDecoratorParamsExample() {
 }
+
+//PROPERTY DECORATOR
+function PropertyDecorator(
+    target: Object, //The prototype of the class
+    propertyKey: string | symbol //The name of the property
+    ) {
+    console.log("PropertyDecorator called on: ", target, propertyKey);
+}
+
+class PropertyDecoratorExample {
+    @PropertyDecorator
+    name: string;
+}
+
+//METHOD DECORATOR
+function MethodDecorator(
+    target: Object, //The protoype of the class
+    propertyKey: string, //The name of the method
+    descriptor: TypedPropertyDescriptor<any>
+) {
+    console.log("MethodDecorator called on: ",target, propertyKey,descriptor);
+}
+
+class MethodDecoratorExample{
+    @MethodDecorator
+    method(){
+    }
+}
+
+MethodDecorator called on: { method: [Function] } method { value: [Function],
+    writable: true,
+    enumerable: true,
+    configurable: true
+}
