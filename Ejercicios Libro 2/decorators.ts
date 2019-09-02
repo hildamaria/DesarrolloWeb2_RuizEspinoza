@@ -84,3 +84,21 @@ MethodDecorator called on: { method: [Function] } method { value: [Function],
     enumerable: true,
     configurable: true
 }
+
+//STATUC METHOD DECORATOR
+function StaticMethodDecorator(
+    target: Function, //the function itself and not the prototype
+    propertyKey: string | symbol, //the name of the static method
+    descriptor: TypedPropertyDescriptor<any>
+) {
+    console.log("StaticMethodDecorator called on: ", target, propertyKey, descriptor);
+}
+
+class StaticMethodDecoratorExample{
+    @StaticMethodDecorator
+    static staticMethod(){
+    }
+}
+
+StaticMethodDecorator called on: function StaticMethodDecoratorExample() {
+}

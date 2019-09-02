@@ -113,3 +113,23 @@ method;
         configurable;
     true;
 }
+//STATUC METHOD DECORATOR
+function StaticMethodDecorator(target, //the function itself and not the prototype
+propertyKey, //the name of the static method
+descriptor) {
+    console.log("StaticMethodDecorator called on: ", target, propertyKey, descriptor);
+}
+var StaticMethodDecoratorExample = /** @class */ (function () {
+    function StaticMethodDecoratorExample() {
+    }
+    StaticMethodDecoratorExample.staticMethod = function () {
+    };
+    __decorate([
+        StaticMethodDecorator
+    ], StaticMethodDecoratorExample, "staticMethod");
+    return StaticMethodDecoratorExample;
+}());
+StaticMethodDecorator;
+called;
+on: function StaticMethodDecoratorExample() {
+}
